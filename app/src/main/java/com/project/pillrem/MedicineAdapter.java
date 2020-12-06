@@ -25,6 +25,7 @@ class MedicineAdapter extends RecyclerView.Adapter<MedicineViewHolder>
     private List<Medicine> listMeds;
     private List<Medicine> mArrayList;
     private DatabaseHandler mDatabase;
+    private String time;
 
     MedicineAdapter(Context context, List<Medicine> listMeds) {
         this.context = context;
@@ -43,7 +44,23 @@ class MedicineAdapter extends RecyclerView.Adapter<MedicineViewHolder>
     public void onBindViewHolder(MedicineViewHolder holder, int position) {
         final Medicine medicine = listMeds.get(position);
         holder.tvName.setText(medicine.getName());
-        holder.tvPhoneNum.setText(medicine.gettime());
+
+        if(Integer.parseInt(medicine.gettime())<46800000){
+            int timeh=(Integer.parseInt(medicine.gettime())/60000)/60;
+            int timem=(Integer.parseInt(medicine.gettime())/60000)-(timeh*60);
+            if (timeh==0) timeh=12;
+             time=timeh+":"+timem+" AM";
+        }
+        else{
+            int timeh=((Integer.parseInt(medicine.gettime())-43200000)/60000)/60;
+            int timem=((Integer.parseInt(medicine.gettime())-43200000)/60000)-(timeh*60);
+            time=timeh+":"+timem+" PM";
+        }
+
+
+        holder.tvPhoneNum.setText(time);
+        holder.tvday.setText(medicine.getday());
+
         holder.deleteContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

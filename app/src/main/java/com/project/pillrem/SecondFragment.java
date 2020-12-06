@@ -2,6 +2,15 @@ package com.project.pillrem;
 /**
  * Created by Sulthan Nizarudin on 06-12-2020.
  */
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioAttributes;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +22,7 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
@@ -22,12 +32,16 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.List;
 
+import static android.content.Context.ALARM_SERVICE;
+
 public class SecondFragment extends Fragment {
     CheckBox checkBox;
     ToggleButton d1,d2,d3,d4,d5,d6,d7;
     EditText mname;
     String day,time;
     TimePicker mdate;
+    private static Context context = null;
+
 
     @Override
     public View onCreateView(
@@ -59,8 +73,7 @@ public class SecondFragment extends Fragment {
         view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int hour, minute;
-                String am_pm;
+                int hour, minute,am_pm;
                 if (Build.VERSION.SDK_INT >= 23) {
                     hour = mdate.getHour();
                     minute = mdate.getMinute();
@@ -69,20 +82,22 @@ public class SecondFragment extends Fragment {
                     minute = mdate.getCurrentMinute();
                 }
                 if (hour > 12) {
-                    am_pm = "PM";
+                    am_pm = 43200000 ;
                     hour = hour - 12;
                 } else {
-                    am_pm = "AM";
+                    am_pm = 0;
                 }
-                time = hour + "," + minute + "," + am_pm;
-                if (d1.isChecked()) day += "S"; else day+="0";
-                if (d2.isChecked()) day += "M"; else day+="0";
-                if (d3.isChecked()) day += "T"; else day+="0";
-                if (d4.isChecked()) day += "W"; else day+="0";
-                if (d5.isChecked()) day += "T"; else day+="0";
-                if (d6.isChecked()) day += "F"; else day+="0";
-                if (d7.isChecked()) day += "S"; else day+="0";
+                time = Integer.toString(hour*3600000 + minute*60000 + am_pm);
+                if (d1.isChecked()) day += "S"; else day+=" ";
+                if (d2.isChecked()) day += "M"; else day+=" ";
+                if (d3.isChecked()) day += "T"; else day+=" ";
+                if (d4.isChecked()) day += "W"; else day+=" ";
+                if (d5.isChecked()) day += "T"; else day+=" ";
+                if (d6.isChecked()) day += "F"; else day+=" ";
+                if (d7.isChecked()) day += "S"; else day+=" ";
                 db.addMedicine(new Medicine(mname.getText().toString(), day, time));
+                context=getActivity();
+                Toast.makeText(context, "Reminder Set", Toast.LENGTH_SHORT).show();
 
 
                 NavHostFragment.findNavController(SecondFragment.this)

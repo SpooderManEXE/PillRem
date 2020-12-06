@@ -8,13 +8,14 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 class MedicineViewHolder extends RecyclerView.ViewHolder {
-    TextView tvName, tvPhoneNum;
+    TextView tvName, tvPhoneNum,tvday;
     ImageView deleteContact;
     ImageView editContact;
     MedicineViewHolder(View itemView) {
         super(itemView);
         tvName = itemView.findViewById(R.id.medname);
         tvPhoneNum = itemView.findViewById(R.id.medtime);
+        tvday=itemView.findViewById(R.id.medday);
         deleteContact = itemView.findViewById(R.id.deleteContact);
     }
 }

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondFragment">
+
+    <TextView
+        android:id="@+id/textview_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/button_second"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="425dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medicine Name" />
+
+            <EditText
+                android:id="@+id/mname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="414dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="29dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Medicine Days" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Everyday" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ToggleButton
+                    android:id="@+id/toggleButton"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_toggle_button"
+                    android:text="ToggleButton"
+                    android:textOff="S"
+                    android:textOn="S" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_toggle_button"
+                    android:text="ToggleButton"
+                    android:textOff="M"
+                    android:textOn="M" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton3"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_toggle_button"
+                    android:text="ToggleButton"
+                    android:textOff="T"
+                    android:textOn="T" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton4"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_toggle_button"
+                    android:text="ToggleButton"
+                    android:textOff="W"
+                    android:textOn="W" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_toggle_button"
+                    android:text="ToggleButton"
+                    android:textOff="T"
+                    android:textOn="T" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton6"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_toggle_button"
+                    android:text="ToggleButton"
+                    android:textOff="F"
+                    android:textOn="F" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton7"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_toggle_button"
+                    android:text="ToggleButton"
+                    android:textOff="S"
+                    android:textOn="S" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medicine Time" />
+
+            <TimePicker
+                android:id="@+id/mdate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:timePickerMode="spinner" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/button_second"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="@string/previous"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

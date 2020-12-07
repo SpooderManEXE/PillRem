@@ -49,12 +49,18 @@ class MedicineAdapter extends RecyclerView.Adapter<MedicineViewHolder>
             int timeh=(Integer.parseInt(medicine.gettime())/60000)/60;
             int timem=(Integer.parseInt(medicine.gettime())/60000)-(timeh*60);
             if (timeh==0) timeh=12;
-             time=timeh+":"+timem+" AM";
+            if (timem<10)
+                time=timeh+":0"+timem+" AM";
+            else
+                time=timeh+":"+timem+" AM";
         }
         else{
             int timeh=((Integer.parseInt(medicine.gettime())-43200000)/60000)/60;
             int timem=((Integer.parseInt(medicine.gettime())-43200000)/60000)-(timeh*60);
-            time=timeh+":"+timem+" PM";
+            if (timem<10)
+                time=timeh+":0"+timem+" PM";
+            else
+                time=timeh+":"+timem+" PM";
         }
 
 

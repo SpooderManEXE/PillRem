@@ -72,6 +72,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Medicine medicine = new Medicine(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getString(2), cursor.getString(3));
+        cursor.close();
+        db.close();
         // return contact
         return medicine;
     }
@@ -98,6 +100,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 contactList.add(medicine);
             } while (cursor.moveToNext());
         }
+        cursor.close();
+        db.close();
 
         // return contact list
         return contactList;
@@ -132,6 +136,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
         cursor.close();
+        db.close();
 
         // return count
         return cursor.getCount();

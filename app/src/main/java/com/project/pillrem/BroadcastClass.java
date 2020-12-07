@@ -68,8 +68,6 @@ public class BroadcastClass extends BroadcastReceiver {
                if ((day==Calendar.SUNDAY&&allmed.get(i).getday().charAt(0)=='S')||(day==Calendar.MONDAY&&allmed.get(i).getday().charAt(1)=='M')||(day==Calendar.TUESDAY&&allmed.get(i).getday().charAt(2)=='T')||(day==Calendar.WEDNESDAY&&allmed.get(i).getday().charAt(3)=='W')||(day==Calendar.THURSDAY&&allmed.get(i).getday().charAt(4)=='T')||(day==Calendar.FRIDAY&&allmed.get(i).getday().charAt(5)=='F')||(day==Calendar.SATURDAY&&allmed.get(i).getday().charAt(6)=='S'))
                {
                     if(currentTime== Integer.parseInt(allmed.get(i).gettime())){
-                        Log.d("k", "ALARM!!! ");
-
                         Pill=allmed.get(i).getName();
                         Intent intent=new Intent(context,BroadcastClass.class);
                         PendingIntent pendingIntent = PendingIntent.getBroadcast(context,0,intent,0);
@@ -93,8 +91,8 @@ public class BroadcastClass extends BroadcastReceiver {
                     .setUsage(AudioAttributes.USAGE_NOTIFICATION)
                     .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
                     .build();
-            CharSequence name="Noti ZZZZ";
-            String desc = "Get to work !";
+            CharSequence name=Pill;
+            String desc = "Take your pill!";
             int impo = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel channel= new NotificationChannel("notifyme",name,impo);
             channel.setDescription(desc);

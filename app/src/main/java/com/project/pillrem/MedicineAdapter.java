@@ -43,7 +43,7 @@ class MedicineAdapter extends RecyclerView.Adapter<MedicineViewHolder>
     @Override
     public void onBindViewHolder(MedicineViewHolder holder, int position) {
         final Medicine medicine = listMeds.get(position);
-        holder.tvName.setText(medicine.getName());
+        holder.medname.setText(medicine.getName());
 
         if(Integer.parseInt(medicine.gettime())<46800000){
             int timeh=(Integer.parseInt(medicine.gettime())/60000)/60;
@@ -64,10 +64,10 @@ class MedicineAdapter extends RecyclerView.Adapter<MedicineViewHolder>
         }
 
 
-        holder.tvPhoneNum.setText(time);
-        holder.tvday.setText(medicine.getday());
+        holder.medtime.setText(time);
+        holder.medday.setText(medicine.getday());
 
-        holder.deleteContact.setOnClickListener(new View.OnClickListener() {
+        holder.deleteMed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mDatabase.deleteContact(medicine);
